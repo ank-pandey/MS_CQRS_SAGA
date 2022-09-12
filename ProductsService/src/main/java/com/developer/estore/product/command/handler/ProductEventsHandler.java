@@ -2,6 +2,7 @@ package com.developer.estore.product.command.handler;
 
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.eventhandling.ResetHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,4 +68,8 @@ public class ProductEventsHandler {
 		log.debug("ProductReservationCancelledEvent: New Product Quantity: " + productEntity.getQuantity());
 	}
 
+	@ResetHandler
+	public void reset() {
+		productRepository.deleteAll();
+	}
 }

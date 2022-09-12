@@ -16,7 +16,7 @@ import com.developer.estore.core.event.ProductReservedEvent;
 import com.developer.estore.product.command.CreateProductCommand;
 import com.developer.estore.product.core.event.ProductCreatedEvent;
 
-@Aggregate
+@Aggregate(snapshotTriggerDefinition = "productSnapshotTriggerDefinition")
 public class ProductAggregate {
 	
 	@AggregateIdentifier
