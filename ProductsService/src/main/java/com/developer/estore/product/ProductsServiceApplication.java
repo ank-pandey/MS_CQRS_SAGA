@@ -8,12 +8,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Import;
 
+import com.developer.estore.core.config.AxonConfig;
 import com.developer.estore.product.command.interceptor.CreateProductCommandInterceptor;
 import com.developer.estore.product.core.exception.ProductServiceEventsExceptionHandler;
 
 @EnableDiscoveryClient
 @SpringBootApplication
+@Import({AxonConfig.class})
 public class ProductsServiceApplication {
 	
 	@Autowired

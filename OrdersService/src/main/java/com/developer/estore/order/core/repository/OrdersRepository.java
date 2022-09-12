@@ -6,4 +6,6 @@ import com.developer.estore.order.core.entity.OrderEntity;
 
 public interface OrdersRepository extends JpaRepository<OrderEntity, String>{
 
+	OrderEntity findByOrderId(String orderId);
+
 }

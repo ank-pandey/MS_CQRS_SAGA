@@ -7,8 +7,12 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
+import com.developer.estore.order.command.ApproveOrderCommand;
 import com.developer.estore.order.command.CreateOrderCommand;
+import com.developer.estore.order.command.RejectOrderCommand;
+import com.developer.estore.order.core.event.OrderApprovedEvent;
 import com.developer.estore.order.core.event.OrderCreatedEvent;
+import com.developer.estore.order.core.event.OrderRejectedEvent;
 import com.developer.estore.order.core.model.OrderStatus;
 
 @Aggregate
@@ -41,5 +45,27 @@ public class OrderAggregate {
 		this.addressId = event.getAddressId();
 		this.quantity = event.getQuantity();
 		this.orderStatus = event.getOrderStatus();
+	}
+	
+	@CommandHandler
+	public void handle(ApproveOrderCommand approveOrderCommand) {
+		OrderApprovedEvent orderApprovedEvent = new OrderApprovedEvent(approveOrderCommand.getOrderId());
+		AggregateLifecycle.apply(orderApprovedEvent);
+	}
+	
+	@EventSourcingHandler
+	public void on(OrderApprovedEvent orderApprovedEvent) {
+		this.orderStatus = orderApprovedEvent.getOrderStatus();
+	}
+	
+	@CommandHandler
+	public void handle(RejectOrderCommand rejectOrderCommand) {
+		OrderRejectedEvent orderRejectEvent = new OrderRejectedEvent(rejectOrderCommand.getOrderId(), rejectOrderCommand.getReason());
+		AggregateLifecycle.apply(orderRejectEvent);
+	}
+	
+	@EventSourcingHandler
+	public void on(OrderRejectedEvent orderRejectedEvent) {
+		this.orderStatus = orderRejectedEvent.getOrderStatus();
 	}
 }

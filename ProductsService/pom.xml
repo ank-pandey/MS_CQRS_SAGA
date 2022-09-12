@@ -9,7 +9,7 @@
 		<version>2.7.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.developer.estore.product</groupId>
+	<groupId>com.developer.estore</groupId>
 	<artifactId>ProductService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProductService</name>
@@ -62,7 +62,7 @@
 		    <version>31.1-jre</version>
 		</dependency>
 		<dependency>
-			<groupId>com.developer.estore.core</groupId>
+			<groupId>com.developer.estore</groupId>
 			<artifactId>CoreService</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
