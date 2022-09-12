@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore;
+package com.developer.estore.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

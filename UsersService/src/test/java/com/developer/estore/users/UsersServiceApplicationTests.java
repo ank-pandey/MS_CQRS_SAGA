@@ -1,10 +1,10 @@
-package com.appsdeveloperblog.estore.apigateway;
+package com.developer.estore.users;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiGatewayApplicationTests {
+class UsersServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
